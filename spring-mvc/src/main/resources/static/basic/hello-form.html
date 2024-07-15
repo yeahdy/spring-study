@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>리소스는 /resources/static 아래에 두면 스프링 부트가 자동으로 인식</h4>
+<p>>> 브라우저에서 http://localhost:8080/basic/hello-form.html 로 접근이 가능하다는 뜻</p>
+<h4>Jar 를 사용하면 webapp 경로를 사용할 수 없다.</h4>
+<p>>> 전통적인 스프링 MVC 애플리케이션에서는 정적 리소스를 src/main/webapp 디렉토리에 둔다.</br>
+    이 디렉토리는 웹 애플리케이션의 루트 디렉토리로 사용되며, JSP 파일이나 정적 리소스를 포함할 수 있다</p>
+<p>>> jar 파일로 배포할 때는 정적리소스를 클래스 경로인 src/main/resources 에 배치해야한다.</p>
+
+<form action="/request-param-v1" method="post">
+    username: <input type="text" name="name" />
+    age: <input type="text" name="age" />
+    <button type="submit">전송</button>
+</form>
+</body>
+</html>

@@ -10,7 +10,7 @@
     <li>username=${member.username}</li>
     <li>age=${member.age}</li>
 </ul>
-<form action="members" method="post">
+<form action="list" method="post">
     <button type="submit">목록</button>
 </form>
 </body>

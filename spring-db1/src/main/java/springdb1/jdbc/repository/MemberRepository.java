@@ -10,6 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import springdb1.jdbc.connection.DBConnectionUtil;
 import springdb1.jdbc.domain.Member;
 
+/**
+ * JDBC- DriverManager 사용
+* */
 @Slf4j
 public class MemberRepository {
 

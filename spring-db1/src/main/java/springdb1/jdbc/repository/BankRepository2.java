@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
+import org.springframework.stereotype.Repository;
 import springdb1.jdbc.domain.Bank;
 
 /**
@@ -20,6 +21,7 @@ import springdb1.jdbc.domain.Bank;
 * */
 @Slf4j
 @RequiredArgsConstructor
+//@Repository
 public class BankRepository2 {
 
     private final DataSource dataSource;

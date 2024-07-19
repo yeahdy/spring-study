@@ -21,7 +21,7 @@ import springdb1.jdbc.domain.Bank;
 * */
 @Slf4j
 @RequiredArgsConstructor
-//@Repository
+@Repository
 public class BankRepository2 {
 
     private final DataSource dataSource;

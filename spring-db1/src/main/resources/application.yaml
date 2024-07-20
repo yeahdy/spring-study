@@ -1,0 +1,7 @@
+spring:
+  application:
+  name: spring-db1
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:

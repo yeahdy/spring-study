@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import springdb1.jdbc.domain.Bank;
-import springdb1.jdbc.repository.BankRepository;
 import springdb1.jdbc.repository.BankRepository2;
 
 /**

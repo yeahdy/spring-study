@@ -40,16 +40,6 @@ class BankService2_3Test {
     @Autowired
     private BankService2_2 bankService;
 
-    @TestConfiguration
-    @RequiredArgsConstructor
-    static class TestConfig {
-        private final DataSource dataSource;
-
-        @Bean
-        BankRepository2 bankRepository(){
-            return new BankRepository2(dataSource);
-        }
-    }
 
     @AfterEach
     void afterEach() throws SQLException {
@@ -105,7 +95,7 @@ class BankService2_3Test {
         log.info("bankRepository class= {}", bankRepository.getClass());
         log.info("bankService class= {}",bankService.getClass());
 
-        assertThat(AopUtils.isAopProxy(bankRepository)).isFalse();
+        assertThat(AopUtils.isAopProxy(bankRepository)).isTrue();
         assertThat(AopUtils.isAopProxy(bankService)).isTrue();
     }
 

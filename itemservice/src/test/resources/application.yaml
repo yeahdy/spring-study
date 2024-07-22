@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: test
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        orm:
+          jdbc:
+            bind: TRACE

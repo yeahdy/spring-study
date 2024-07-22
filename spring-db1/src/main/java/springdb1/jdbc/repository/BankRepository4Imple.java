@@ -9,12 +9,12 @@ import java.util.NoSuchElementException;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
+import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.stereotype.Repository;
 import springdb1.jdbc.domain.Bank;
-import springdb1.jdbc.repository.exeception.DbException;
 
 /**
  * 예외 누수 문제 해결
@@ -23,10 +23,11 @@ import springdb1.jdbc.repository.exeception.DbException;
 @Slf4j
 @RequiredArgsConstructor
 @Repository
-@Qualifier("bankRepository3Imple")
-public class BankRepository3Imple implements BankRepository3 {
+@Primary
+public class BankRepository4Imple implements BankRepository3 {
 
     private final DataSource dataSource;
+    private final SQLExceptionTranslator translator;
 
     public Bank save(Bank bank) {
         String sql = "insert into bank(bank_id, money) values(?,?)";
@@ -41,7 +42,7 @@ public class BankRepository3Imple implements BankRepository3 {
             pstmt.setInt(2, bank.getMoney());
             pstmt.executeUpdate();
         } catch (SQLException se) {
-            throw new DbException(se);
+            throw translator.translate("save",sql, se);
         } finally {
             close(con, pstmt, null);
         }
@@ -69,7 +70,7 @@ public class BankRepository3Imple implements BankRepository3 {
                 throw new NoSuchElementException("bank not found bankId=" + bankId);
             }
         } catch (SQLException se) {
-            throw new DbException(se);
+            throw translator.translate("select",sql, se);
         } finally {
             close(con, pstmt, null);
         }
@@ -88,7 +89,7 @@ public class BankRepository3Imple implements BankRepository3 {
             int resultSize = pstmt.executeUpdate();
             log.info("resultSize={}", resultSize);
         } catch (SQLException e) {
-            throw new DbException(e);
+            throw translator.translate("update",sql, e);
         } finally {
             JdbcUtils.closeStatement(pstmt);
         }
@@ -104,7 +105,7 @@ public class BankRepository3Imple implements BankRepository3 {
             pstmt.setString(1, bankId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            throw new DbException(e);
+            throw translator.translate("delete",sql, e);
         } finally {
             close(con, pstmt, null);
         }

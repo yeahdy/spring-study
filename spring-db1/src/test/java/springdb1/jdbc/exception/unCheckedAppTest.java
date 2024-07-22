@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * 기본적으로 언체크 예외를 사용하자 체크예외는 의도적인 비즈니스 로직에만 사용한다.
  */
-public class unCheckedAppTest {
+public class UnCheckedAppTest {
 
     @Test
     void unchecked(){

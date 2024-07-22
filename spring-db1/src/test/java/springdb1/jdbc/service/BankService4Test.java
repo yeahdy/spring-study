@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import springdb1.jdbc.domain.Bank;
 import springdb1.jdbc.repository.BankRepository3;
@@ -22,6 +23,7 @@ class BankService4Test {
     public static final String BANK_EX = "ex";
 
     @Autowired
+//    @Qualifier("bankRepository5Imple")
     private BankRepository3 bankRepository;
     @Autowired
     private BankService3 bankService;

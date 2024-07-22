@@ -49,14 +49,9 @@ class BankService2_2Test {
             hikariDataSource.setPassword(PASSWORD);
             return hikariDataSource;
         }
-
         @Bean
         PlatformTransactionManager transactionManager(){
             return new DataSourceTransactionManager(dataSource());
-        }
-        @Bean
-        BankRepository2 bankRepository(){
-            return new BankRepository2(dataSource());
         }
     }
 

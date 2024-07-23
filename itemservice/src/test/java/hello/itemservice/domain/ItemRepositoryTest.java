@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import org.springframework.test.annotation.Commit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,14 +42,15 @@ class ItemRepositoryTest {
     }
 
     @Test
+    @Commit
     void updateItem() {
         //given
-        Item item = new Item("item1", 10000, 10);
+        Item item = new Item("item3", 10000, 10);
         Item savedItem = itemRepository.save(item);
         Long itemId = savedItem.getId();
 
         //when
-        ItemUpdateDto updateParam = new ItemUpdateDto("item2", 20000, 30);
+        ItemUpdateDto updateParam = new ItemUpdateDto("item3-1", 20000, 30);
         itemRepository.update(itemId, updateParam);
 
         //then
